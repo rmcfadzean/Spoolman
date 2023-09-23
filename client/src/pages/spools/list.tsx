@@ -81,6 +81,7 @@ export const SpoolList: React.FC<IResourceComponentsProps> = () => {
     "id",
     "combined_name",
     "filament.material",
+    "price",
     "used_weight",
     "remaining_weight",
     "used_length",
@@ -248,6 +249,12 @@ export const SpoolList: React.FC<IResourceComponentsProps> = () => {
           dataSource,
           tableState,
           filterValueQuery: useSpoolmanMaterials(),
+        })}
+        {SortedColumn({
+          id: "price",
+          i18ncat: "spool",
+          dataSource,
+          tableState,
         })}
         {NumberColumn({
           id: "used_weight",

@@ -54,6 +54,11 @@ class SpoolParameters(BaseModel):
         example="",
     )
     archived: bool = Field(default=False, description="Whether this spool is archived and should not be used anymore.")
+    price: Optional[float] = Field(
+        ge=0,
+        description="The price of this spool in the system configured currency.",
+        example=20.0,
+    )
 
 
 class SpoolUpdateParameters(SpoolParameters):
@@ -318,6 +323,7 @@ async def create(  # noqa: ANN201
             lot_nr=body.lot_nr,
             comment=body.comment,
             archived=body.archived,
+            price=body.price,
         )
         return Spool.from_db(db_item)
     except ItemCreateError:

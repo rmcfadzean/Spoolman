@@ -116,6 +116,8 @@ export const SpoolShow: React.FC<IResourceComponentsProps> = () => {
       <TextField value={enrichText(record?.comment)} />
       <Title level={5}>{t("spool.fields.archived")}</Title>
       <TextField value={record?.archived ? t("yes") : t("no")} />
+      <Title level={5}>{t("spool.fields.price")}</Title>
+      <TextField value={record?.price} />
     </Show>
   );
 };

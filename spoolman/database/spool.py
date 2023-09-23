@@ -34,6 +34,7 @@ async def create(
     *,
     db: AsyncSession,
     filament_id: int,
+    price: Optional[float] = None,
     remaining_weight: Optional[float] = None,
     used_weight: Optional[float] = None,
     first_used: Optional[datetime] = None,
@@ -61,6 +62,7 @@ async def create(
 
     db_item = models.Spool(
         filament=filament_item,
+        price=price,
         used_weight=used_weight,
         first_used=first_used,
         last_used=last_used,

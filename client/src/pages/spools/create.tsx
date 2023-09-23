@@ -51,6 +51,7 @@ export const SpoolCreate: React.FC<IResourceComponentsProps & CreateOrCloneProps
       value: item.id,
       weight: item.weight,
       spool_weight: item.spool_weight,
+      price: item.price,
     };
   });
   filamentOptions?.sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: "base" }));
@@ -64,6 +65,16 @@ export const SpoolCreate: React.FC<IResourceComponentsProps & CreateOrCloneProps
   });
   const filamentWeight = selectedFilament?.weight || 0;
   const spoolWeight = selectedFilament?.spool_weight || 0;
+
+  // If the user has entered a price, use that. Otherwise, use the price from the filament or 0
+  const price = form.getFieldValue('price') || selectedFilament?.price || 0;
+
+  React.useEffect(() => {
+    form.setFieldsValue({
+        price: price,
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFilamentID]); // Don't believe eslint's lies. We only want this to change when the filament changes.
 
   const filamentChange = (newID: number) => {
     const newSelectedFilament = filamentOptions?.find((obj) => {
@@ -145,6 +156,10 @@ export const SpoolCreate: React.FC<IResourceComponentsProps & CreateOrCloneProps
               filamentChange(value);
             }}
           />
+        </Form.Item>
+
+        <Form.Item name={["price"]}  label={t("spool.fields.price")} help={t("spool.fields_help.price")}>
+          <InputNumber value={price} />
         </Form.Item>
 
         <Form.Item hidden={true} name={["used_weight"]} initialValue={0}>

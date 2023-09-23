@@ -58,3 +58,4 @@ class Spool(Base):
     lot_nr: Mapped[Optional[str]] = mapped_column(String(64))
     comment: Mapped[Optional[str]] = mapped_column(String(1024))
     archived: Mapped[Optional[bool]] = mapped_column()
+    price: Mapped[Optional[float]] = mapped_column()

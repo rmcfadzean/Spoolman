@@ -168,6 +168,11 @@ class Spool(BaseModel):
         example="",
     )
     archived: bool = Field(description="Whether this spool is archived and should not be used anymore.")
+    price: Optional[float] = Field(
+        ge=0,
+        description="The price of this spool in the system configured currency.",
+        example=20.0,
+    )
 
     @staticmethod
     def from_db(item: models.Spool) -> "Spool":
@@ -204,6 +209,7 @@ class Spool(BaseModel):
             lot_nr=item.lot_nr,
             comment=item.comment,
             archived=item.archived if item.archived is not None else False,
+            price=item.price,
         )
 
 

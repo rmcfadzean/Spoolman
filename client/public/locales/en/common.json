@@ -145,7 +145,8 @@
       "last_used": "Last Used",
       "registered": "Registered",
       "comment": "Comment",
-      "archived": "Archived"
+      "archived": "Archived",
+      "price": "Price"
     },
     "fields_help": {
       "weight_to_use": "Select what weight value to enter. Measured weight is only available if the spool weight is set for the selected filament.",
@@ -153,7 +154,8 @@
       "remaining_weight": "How much filament is left on the spool. For a new spool this should match the spool weight.",
       "measured_weight": "How much the filament and spool weigh.",
       "location": "Where the spool is located if you have multiple locations where you store your spools.",
-      "lot_nr": "Manufacturer's lot number. Can be used to ensure a print has consistent color if multiple spools are used."
+      "lot_nr": "Manufacturer's lot number. Can be used to ensure a print has consistent color if multiple spools are used.",
+      "price": "Purchase price of the spool."
     },
     "titles": {
       "create": "Create Spool",
